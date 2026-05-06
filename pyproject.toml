@@ -1,0 +1,81 @@
+[build-system]
+requires = ["hatchling>=1.18"]
+build-backend = "hatchling.build"
+
+[project]
+name = "evalseed"
+version = "0.1.0"
+description = "Generate quality-filtered synthetic Q&A datasets for RAG evaluation."
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.10"
+authors = [{ name = "Purnendu Das" }]
+keywords = [
+    "rag",
+    "llm",
+    "evaluation",
+    "synthetic-data",
+    "question-generation",
+    "dataset-generation",
+    "rag-evaluation",
+    "golden-dataset",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "pydantic>=2.0",
+    "openai>=1.0",
+    "tiktoken>=0.5",
+    "rich>=13.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+    "ruff>=0.4",
+    "mypy>=1.8",
+    "build>=1.0",
+]
+
+[project.scripts]
+evalseed = "evalseed.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/purnendu-das/evalseed"
+Repository = "https://github.com/purnendu-das/evalseed"
+Issues = "https://github.com/purnendu-das/evalseed/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/evalseed"]
+
+[tool.hatch.build.targets.sdist]
+include = ["src/evalseed", "README.md", "LICENSE", "pyproject.toml"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM"]
+ignore = ["E501"]
+
+[tool.mypy]
+python_version = "3.10"
+strict = true
+warn_unreachable = true
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra --strict-markers"

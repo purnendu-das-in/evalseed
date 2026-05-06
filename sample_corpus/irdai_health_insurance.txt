@@ -1,0 +1,23 @@
+IRDAI Guidelines on Standardization in Health Insurance (Excerpt)
+
+1. Free Look Period
+Every health insurance policy issued for a term of three years or less shall provide a free look period of at least 15 days from the date of receipt of the policy document. During this period, the policyholder may review the terms and conditions of the policy and, if not agreeable to any of the terms, may return the policy to the insurer for cancellation. Where the policy is sourced through distance marketing or electronic mode, the free look period shall be 30 days.
+
+2. Refund on Cancellation During Free Look
+On cancellation during the free look period, the insurer shall refund the premium paid after deducting:
+  (a) the proportionate risk premium for the period on cover;
+  (b) expenses incurred by the insurer on medical examination of the proposer, if any; and
+  (c) stamp duty charges.
+No claim shall be admissible under such a cancelled policy.
+
+3. Renewal of Health Insurance Policies
+A health insurance policy shall ordinarily be renewable except on grounds of established fraud, moral hazard, or misrepresentation by the insured. The insurer shall not deny renewal on the ground that a claim was made in the preceding policy year. A grace period of 30 days from the date of expiry shall be allowed for renewal of the policy without loss of continuity benefits, including waiting period and coverage of pre-existing diseases. Coverage shall not be available during the grace period.
+
+4. Pre-Existing Disease Waiting Period
+Pre-existing diseases, as defined in the policy, shall be covered after a waiting period not exceeding 48 months of continuous coverage with the insurer. The waiting period shall be reduced by the period of continuous coverage already completed under any previous health insurance policy held by the insured, subject to portability provisions.
+
+5. Portability
+A policyholder desirous of porting his policy to another insurer shall apply to such insurer at least 45 days before the premium renewal date of the existing policy. The new insurer shall be required to underwrite the proposal within 15 days of receipt of the portability form and the proposal form, failing which the proposal shall be deemed to have been accepted on the same terms as the existing policy.
+
+6. Cumulative Bonus
+Where the policy provides for a cumulative bonus, the bonus shall be reduced in the same proportion at which it was accrued in the event of a claim being made under the policy. The cumulative bonus shall not exceed 50% of the sum insured.
