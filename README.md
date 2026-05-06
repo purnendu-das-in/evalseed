@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/downloads/)
-[![Tests](https://github.com/purnendu-das/evalseed/actions/workflows/test.yml/badge.svg)](https://github.com/purnendu-das/evalseed/actions/workflows/test.yml)
+[![Tests](https://github.com/purnendu-das-in/evalseed/actions/workflows/test.yml/badge.svg)](https://github.com/purnendu-das-in/evalseed/actions/workflows/test.yml)
 [![Status: alpha](https://img.shields.io/badge/status-alpha-orange.svg)](#status)
 
 **Generate RAG evaluation datasets you'd actually trust.**
@@ -93,7 +93,7 @@ An LLM that is asked structured yes/no questions about a pair: "is this answer s
 ### Steps
 
 ```bash
-git clone https://github.com/purnendu-das/evalseed
+git clone https://github.com/purnendu-das-in/evalseed
 cd evalseed
 pip install -e .
 ```
