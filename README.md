@@ -1,8 +1,15 @@
 # evalseed
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/downloads/)
+[![Tests](https://github.com/purnendu-das-in/evalseed/actions/workflows/test.yml/badge.svg)](https://github.com/purnendu-das-in/evalseed/actions/workflows/test.yml)
+[![Status: alpha](https://img.shields.io/badge/status-alpha-orange.svg)](#status)
+
 **Generate RAG evaluation datasets you'd actually trust.**
 
 evalseed produces synthetic question-answer pairs from your documents and **filters out the bad ones** — the unfaithful, ambiguous, or trivial pairs that quietly poison most RAG benchmarks.
+
+> New to RAG? A **RAG app** is a chatbot or assistant that answers questions by looking things up in your documents. To know if it works, you need a list of test questions with correct answers — that's an "eval dataset", and that's what evalseed builds for you. See [What problem does this solve?](#what-problem-does-this-solve) for the longer version.
 
 ```python
 from evalseed import Pipeline, OpenAIJudge
@@ -77,11 +84,21 @@ An LLM that is asked structured yes/no questions about a pair: "is this answer s
 
 ## Install
 
+### Prerequisites
+
+- **Python 3.10 or newer.** Check with `python --version`. If it's older, grab the latest from [python.org](https://www.python.org/downloads/).
+- **An OpenAI API key.** Sign up at [platform.openai.com](https://platform.openai.com/), add a few dollars of credit, and create a key. A run on `gpt-4o-mini` typically costs cents, not dollars.
+- **Git.** To clone the repo. (Skip this once we're on PyPI.)
+
+### Steps
+
 ```bash
-git clone https://github.com/purnendu-das/evalseed
+git clone https://github.com/purnendu-das-in/evalseed
 cd evalseed
 pip install -e .
 ```
+
+> **Tip:** install into a virtual environment so it doesn't clash with your other Python projects: `python -m venv .venv && source .venv/bin/activate` (macOS/Linux) or `python -m venv .venv; .venv\Scripts\Activate.ps1` (Windows PowerShell).
 
 Then set your OpenAI key:
 
@@ -91,6 +108,12 @@ export OPENAI_API_KEY="sk-..."
 
 # Windows PowerShell
 $env:OPENAI_API_KEY = "sk-..."
+```
+
+Verify the install:
+
+```bash
+evalseed --help
 ```
 
 PyPI release is gated on the Phase 0 validation spike — see [Status](#status).
@@ -119,7 +142,7 @@ You should see live progress: how many docs and chunks were loaded, how many pai
 
 **3. Look at what came out.**
 
-- `eval.jsonl` — one line per **passed** Q&A pair. Each line is JSON.
+- `eval.jsonl` — one line per **passed** Q&A pair. Each line is a self-contained JSON object. (JSONL = "JSON Lines", a streaming-friendly text format that most eval tools — RAGAS, DeepEval, LangChain — read directly.)
 - If you also pass `--all`, rejected pairs are saved with the failing filter's `reason`. Read these to judge whether the filters are doing the right thing on *your* documents.
 
 **4. Now scale up.** Once a small run looks sane, bump `-n` to 100 or 200 for a real eval set.
@@ -407,13 +430,11 @@ Pre-release alpha. The Phase 0 validation spike (see [docs/phase0/](docs/phase0/
 
 ### Comparison
 
-<!-- TODO: fill in once Phase 0 benchmark is run -->
-
 |                          | evalseed | RAGAS | DeepEval Synthesizer |
 |--------------------------|----------|-------|----------------------|
-| Multi-stage filtering    |          |       |                      |
-| Type labeling            |          |       |                      |
-| Pluggable judge          |          |       |                      |
+| Multi-stage filtering    | Yes — 6 ordered stages (2 pre-filters + 4 LLM judges), each rejection carries a structured `reason` | No explicit post-gen filter pipeline — quality is folded into the generation step | Partial — single LLM quality check / threshold |
+| Type labeling            | `single_hop` / `multi_hop` / `distractor`, plus a difficulty label | Evolution types (`simple`, `reasoning`, `multi_context`, `conditional`) | Evolution types (reasoning, multi-context, etc.) |
+| Pluggable judge          | One-method `Judge` protocol — drop-in for any provider | Via LangChain LLM wrapper | Via `DeepEvalBaseLLM` subclass |
 
 ---
 
