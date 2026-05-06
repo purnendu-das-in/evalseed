@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "evalseed"
-version = "0.1.0"
+version = "0.1.1"
 description = "Generate quality-filtered synthetic Q&A datasets for RAG evaluation."
 readme = "README.md"
 license = { file = "LICENSE" }
