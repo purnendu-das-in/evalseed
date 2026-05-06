@@ -407,13 +407,11 @@ Pre-release alpha. The Phase 0 validation spike (see [docs/phase0/](docs/phase0/
 
 ### Comparison
 
-<!-- TODO: fill in once Phase 0 benchmark is run -->
-
 |                          | evalseed | RAGAS | DeepEval Synthesizer |
 |--------------------------|----------|-------|----------------------|
-| Multi-stage filtering    |          |       |                      |
-| Type labeling            |          |       |                      |
-| Pluggable judge          |          |       |                      |
+| Multi-stage filtering    | Yes — 6 ordered stages (2 pre-filters + 4 LLM judges), each rejection carries a structured `reason` | No explicit post-gen filter pipeline — quality is folded into the generation step | Partial — single LLM quality check / threshold |
+| Type labeling            | `single_hop` / `multi_hop` / `distractor`, plus a difficulty label | Evolution types (`simple`, `reasoning`, `multi_context`, `conditional`) | Evolution types (reasoning, multi-context, etc.) |
+| Pluggable judge          | One-method `Judge` protocol — drop-in for any provider | Via LangChain LLM wrapper | Via `DeepEvalBaseLLM` subclass |
 
 ---
 
