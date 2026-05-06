@@ -1,0 +1,22 @@
+# Code owners for evalseed
+# https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+#
+# Each line is a file pattern followed by one or more owners.
+# Owners listed here will automatically be requested for review when a PR
+# modifies matching files.
+
+# Default owner for everything in the repo
+*                       @purnendu-das-in
+
+# CI / GitHub workflows and security configuration
+/.github/               @purnendu-das-in
+/.github/workflows/     @purnendu-das-in
+
+# Python package source and tests
+/src/evalseed/          @purnendu-das-in
+/tests/                 @purnendu-das-in
+
+# Project / packaging metadata
+/pyproject.toml         @purnendu-das-in
+/LICENSE                @purnendu-das-in
+/SECURITY.md            @purnendu-das-in
